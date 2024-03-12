@@ -10,6 +10,7 @@ klippy_uds_address = ~/printer_data/comms/klippy.sock
 enable_object_processing = False
 
 [authorization]
+force_logins = false
 cors_domains = 
 	https://my.mainsail.xyz
 	http://my.mainsail.xyz
@@ -50,12 +51,12 @@ path = ~/mainsail-config
 origin = https://github.com/mainsail-crew/mainsail-config.git
 managed_services = klipper
 
-[update_manager crowsnest]
+[update_manager timelapse]
 type = git_repo
-path = ~/crowsnest
-origin = https://github.com/mainsail-crew/crowsnest.git
-managed_services = crowsnest
-install_script = tools/pkglist.sh
+primary_branch = main
+path = ~/moonraker-timelapse
+origin = https://github.com/mainsail-crew/moonraker-timelapse.git
+managed_services = klipper moonraker
 
 [update_manager sonar]
 type = git_repo
@@ -74,4 +75,27 @@ requirements = requirements.txt
 install_script = install.sh
 managed_services = 
 	moonraker-obico
+
+[update_manager mobileraker]
+type = git_repo
+path = /home/poudenes/mobileraker_companion
+origin = https://github.com/Clon1998/mobileraker_companion.git
+primary_branch = main
+managed_services = mobileraker
+env = /home/poudenes/mobileraker-env/bin/python
+requirements = scripts/mobileraker-requirements.txt
+install_script = scripts/install.sh
+
+[update_manager fluidd-config]
+type = git_repo
+primary_branch = master
+path = ~/fluidd-config
+origin = https://github.com/fluidd-core/fluidd-config.git
+managed_services = klipper
+
+[update_manager fluidd]
+type = web
+channel = stable
+repo = fluidd-core/fluidd
+path = ~/fluidd
 
