@@ -1,13 +1,13 @@
 [server]
 host = 0.0.0.0
 port = 7125
-max_upload_size = 1024
+max_upload_size = 2048
 klippy_uds_address = ~/printer_data/comms/klippy.sock
 
 [simplyprint]
 
 [file_manager]
-enable_object_processing = False
+enable_object_processing = True
 
 [authorization]
 force_logins = false
@@ -66,16 +66,6 @@ primary_branch = main
 managed_services = sonar
 install_script = tools/install.sh
 
-[update_manager moonraker-obico]
-type = git_repo
-path = /home/poudenes/moonraker-obico
-origin = https://github.com/TheSpaghettiDetective/moonraker-obico.git
-env = /home/poudenes/moonraker-obico/../moonraker-obico-env/bin/python
-requirements = requirements.txt
-install_script = install.sh
-managed_services = 
-	moonraker-obico
-
 [update_manager mobileraker]
 type = git_repo
 path = /home/poudenes/mobileraker_companion
@@ -98,4 +88,14 @@ type = web
 channel = stable
 repo = fluidd-core/fluidd
 path = ~/fluidd
+
+[update_manager moonraker-obico]
+type = git_repo
+path = /home/poudenes/moonraker-obico
+origin = https://github.com/TheSpaghettiDetective/moonraker-obico.git
+env = /home/poudenes/moonraker-obico/../moonraker-obico-env/bin/python
+requirements = requirements.txt
+install_script = install.sh
+managed_services = 
+	moonraker-obico
 
