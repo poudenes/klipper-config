@@ -1,16 +1,18 @@
 [server]
 host = 0.0.0.0
 port = 7125
-max_upload_size = 2048
+max_upload_size = 4096
 klippy_uds_address = ~/printer_data/comms/klippy.sock
 
-[simplyprint]
+[spoolman]
+server = http://192.168.100.78:7912
+sync_rate = 5
 
 [file_manager]
 enable_object_processing = True
 
 [authorization]
-force_logins = false
+enable_api_key = True
 cors_domains = 
 	https://my.mainsail.xyz
 	http://my.mainsail.xyz
@@ -35,16 +37,28 @@ subscriptions =
 	mainsail
 
 [update_manager]
-refresh_interval = 168
+refresh_interval = 6
 enable_auto_refresh = True
+enable_system_updates = True
+
+[update_manager klipper_tmc_autotune]
+type = git_repo
+channel = dev
+path = ~/klipper_tmc_autotune
+origin = https://github.com/andrewmcgr/klipper_tmc_autotune.git
+managed_services = klipper
+primary_branch = main
+install_script = install.sh
 
 [update_manager mainsail]
+refresh_interval = 6
 type = web
 channel = stable
 repo = mainsail-crew/mainsail
 path = ~/mainsail
 
 [update_manager mainsail-config]
+refresh_interval = 6
 type = git_repo
 primary_branch = master
 path = ~/mainsail-config
@@ -52,6 +66,7 @@ origin = https://github.com/mainsail-crew/mainsail-config.git
 managed_services = klipper
 
 [update_manager timelapse]
+refresh_interval = 6
 type = git_repo
 primary_branch = main
 path = ~/moonraker-timelapse
@@ -59,6 +74,7 @@ origin = https://github.com/mainsail-crew/moonraker-timelapse.git
 managed_services = klipper moonraker
 
 [update_manager sonar]
+refresh_interval = 6
 type = git_repo
 path = ~/sonar
 origin = https://github.com/mainsail-crew/sonar.git
@@ -67,6 +83,7 @@ managed_services = sonar
 install_script = tools/install.sh
 
 [update_manager mobileraker]
+refresh_interval = 6
 type = git_repo
 path = /home/poudenes/mobileraker_companion
 origin = https://github.com/Clon1998/mobileraker_companion.git
@@ -77,6 +94,7 @@ requirements = scripts/mobileraker-requirements.txt
 install_script = scripts/install.sh
 
 [update_manager fluidd-config]
+refresh_interval = 6
 type = git_repo
 primary_branch = master
 path = ~/fluidd-config
@@ -84,6 +102,7 @@ origin = https://github.com/fluidd-core/fluidd-config.git
 managed_services = klipper
 
 [update_manager fluidd]
+refresh_interval = 6
 type = web
 channel = stable
 repo = fluidd-core/fluidd
