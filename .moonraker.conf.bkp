@@ -4,6 +4,10 @@ port = 7125
 max_upload_size = 4096
 klippy_uds_address = ~/printer_data/comms/klippy.sock
 
+[octoprint_compat]
+
+[history]
+
 [spoolman]
 server = http://192.168.100.78:7912
 sync_rate = 5
@@ -12,14 +16,17 @@ sync_rate = 5
 enable_object_processing = True
 
 [authorization]
-enable_api_key = True
+enable_api_key = true
+force_logins = true
 cors_domains = 
+	https://mobileraker.hassio.nl
 	https://my.mainsail.xyz
 	http://my.mainsail.xyz
 	http://*.local
 	http://*.lan
 trusted_clients = 
 	10.0.0.0/8
+	10.6.0.0/24
 	127.0.0.0/8
 	169.254.0.0/16
 	172.16.0.0/12
@@ -28,13 +35,9 @@ trusted_clients =
 	FE80::/10
 	::1/128
 
-[octoprint_compat]
-
-[history]
-
 [announcements]
 subscriptions = 
-	mainsail
+	mainsail klipper
 
 [update_manager]
 refresh_interval = 6
